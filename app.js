@@ -7,6 +7,8 @@ const userRoutes = require('./routes/user');
 
 mongoose.connect('mongodb://localhost:27017/maarch', { useNewUrlParser: true });
 
+app.use(bodyParser.json());
+
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
@@ -16,6 +18,5 @@ app.use((req, res, next) => {
 
 app.use('/api/user', userRoutes);
 
-app.use(bodyParser.json());
 
 module.exports = app;
