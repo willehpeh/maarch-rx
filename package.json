@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "mongod --config /usr/local/etc/mongod.conf & nodemon index",
+    "serve": "concurrently \"mongod --config /usr/local/etc/mongod.conf\" \"nodemon index\" \"cd frontend && ng serve\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

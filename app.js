@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 const userRoutes = require('./routes/user');
+const dynamicFormRoutes = require('./routes/dynamic-form');
+const postsRoutes = require('./routes/posts');
 
 mongoose.connect('mongodb://localhost:27017/maarch', { useNewUrlParser: true });
 
@@ -17,6 +19,8 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/user', userRoutes);
+app.use('/api/dynamic-form', dynamicFormRoutes);
+app.use('/api/posts', postsRoutes);
 
 
 module.exports = app;
