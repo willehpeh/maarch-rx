@@ -2,13 +2,13 @@ const Post = require('../models/Post');
 const jwt = require('jsonwebtoken');
 
 exports.getPosts = (req, res, next) => {
-  if (!req.body.pageNumber || !req.body.pageSize || req.body.pageNumber <= 0 || req.body.pageSize <= 0) {
+  if (!req.query.pageNumber || !req.query.pageSize || +req.query.pageNumber <= 0 || +req.query.pageSize <= 0) {
     return res.status(400).json({ error: 'Invalid request!'});
   }
   const pageNumber = req.body.pageNumber;
   const pageSize = req.body.pageSize;
   Post.countDocuments().then(count => {
-    Post.find({}, null, { skip: pageSize * (pageNumber - 1), limit: pageSize }).then(results => {
+    Post.find({}, null, { skip: pageSize * (pageNumber - 1), limit: pageSize, sort: 'createdAt -1' }).then(results => {
       res.status(200).json({ pageNumber, pageSize, totalPages: count / pageSize, results });
     }).catch(error => {
       res.status(500).json({ error: error || 'Database error!' });

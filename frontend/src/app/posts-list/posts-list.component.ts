@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { PostsService } from '../services/posts.service';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Post } from '../models/Post.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-posts-list',
@@ -7,9 +12,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostsListComponent implements OnInit {
 
-  constructor() { }
+  posts$: Observable<Post[]>;
+
+  constructor(private posts: PostsService,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.posts$ = this.posts.getPosts().pipe(
+      map(response => response.results)
+    );
   }
 
 }

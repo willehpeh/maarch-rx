@@ -1,3 +1,14 @@
-<p>
-  login works!
-</p>
+<mat-card>
+  <mat-card-title>Login</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="loginForm">
+      <mat-form-field>
+        <input matInput type="email" placeholder="Email address" formControlName="email">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" placeholder="Password" formControlName="password">
+      </mat-form-field>
+      <button type="submit" mat-flat-button (click)="onLogin()" color="primary">LOGIN</button>
+    </form>
+  </mat-card-content>
+</mat-card>

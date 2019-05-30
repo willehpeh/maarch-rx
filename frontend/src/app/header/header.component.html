@@ -1,9 +1,12 @@
 <mat-toolbar color="primary">
-  <h1>Maarch RxJS Training</h1>
-  <div id="header-links">
-    <button mat-button routerLink="posts">Posts</button>
-    <button mat-button routerLink="messages">Messages</button>
-    <button mat-button routerLink="auth/login">Login</button>
-    <button mat-button routerLink="auth/signup">Sign up</button>
-  </div>
+  <mat-toolbar-row class="mat-elevation-z2">
+    <button mat-button routerLink="">Maarch Reactive Training</button>
+    <div id="header-links">
+      <button mat-button routerLink="posts" routerLinkActive="active">POSTS</button>
+      <button mat-button routerLink="messages" routerLinkActive="active" *ngIf="isAuth$ | async">MESSAGES</button>
+      <button mat-button routerLink="auth/login" routerLinkActive="active" *ngIf="!(isAuth$ | async)">LOGIN</button>
+      <button mat-button routerLink="auth/signup" routerLinkActive="active" *ngIf="!(isAuth$ | async)">SIGN UP</button>
+      <button mat-button (click)="onLogout()" *ngIf="isAuth$ | async">LOGOUT</button>
+    </div>
+  </mat-toolbar-row>
 </mat-toolbar>
