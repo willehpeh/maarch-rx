@@ -5,20 +5,27 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
-import { MatToolbarModule } from '@angular/material';
+import { MatButtonModule, MatToolbarModule } from '@angular/material';
 import { PostsListComponent } from './posts-list/posts-list.component';
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { MessagesListComponent } from './messages-list/messages-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    PostsListComponent
+    PostsListComponent,
+    LoginComponent,
+    SignupComponent,
+    MessagesListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
