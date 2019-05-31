@@ -20,6 +20,10 @@ export class AuthService {
     return this.isAuth$.asObservable();
   }
 
+  getToken() {
+    return this.token || null;
+  }
+
   login(email: string, password: string) {
     return this.http.post<{token: string, userId: string}>(`${this.config.apiUrl}/user/login`, { email, password }).pipe(
       tap(data => {
