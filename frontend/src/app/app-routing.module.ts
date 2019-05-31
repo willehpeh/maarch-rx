@@ -4,13 +4,17 @@ import { PostsListComponent } from './posts-list/posts-list.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { MessagesListComponent } from './messages-list/messages-list.component';
+import { NewPostComponent } from './new-post/new-post.component';
 
 const routes: Routes = [
   { path: 'auth', children: [
       { path: 'login', component: LoginComponent },
       { path: 'signup', component: SignupComponent }
     ]},
-  { path: 'posts', component: PostsListComponent },
+  { path: 'posts', children: [
+      { path: 'new-post', component: NewPostComponent },
+      { path: '', pathMatch: 'full', component: PostsListComponent }
+  ]},
   { path: 'messages', component: MessagesListComponent },
   { path: '', pathMatch: 'full', redirectTo: 'posts' }
 ];

@@ -17,4 +17,8 @@ export class PostsService {
   getPosts(pageNumber: number = 1, pageSize: number = 20) {
     return this.http.get<{ totalPages: number, results: Post[] }>(`${this.apiUrl}/posts?pageNumber=${pageNumber}&pageSize=${pageSize}`);
   }
+
+  newPost(title: string, content: string) {
+    return this.http.post(`${this.apiUrl}/posts/new-post`, { post: { title, content }});
+  }
 }

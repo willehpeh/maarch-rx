@@ -8,7 +8,7 @@ exports.getPosts = (req, res, next) => {
   const pageNumber = req.body.pageNumber;
   const pageSize = req.body.pageSize;
   Post.countDocuments().then(count => {
-    Post.find({}, null, { skip: pageSize * (pageNumber - 1), limit: pageSize, sort: 'createdAt -1' }).then(results => {
+    Post.find({}, null, { skip: pageSize * (pageNumber - 1), limit: pageSize, sort: '-createdAt' }).then(results => {
       res.status(200).json({ pageNumber, pageSize, totalPages: count / pageSize, results });
     }).catch(error => {
       res.status(500).json({ error: error || 'Database error!' });

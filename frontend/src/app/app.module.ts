@@ -19,6 +19,7 @@ import { MessagesListComponent } from './messages-list/messages-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { httpInterceptorProviders } from './services/interceptors';
+import { NewPostComponent } from './new-post/new-post.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { httpInterceptorProviders } from './services/interceptors';
     PostsListComponent,
     LoginComponent,
     SignupComponent,
-    MessagesListComponent
+    MessagesListComponent,
+    NewPostComponent
   ],
   imports: [
     BrowserModule,
