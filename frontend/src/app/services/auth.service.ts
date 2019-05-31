@@ -24,6 +24,10 @@ export class AuthService {
     return this.token || null;
   }
 
+  getCurrentUser() {
+    return this.currentUser || null;
+  }
+
   login(email: string, password: string) {
     return this.http.post<{token: string, userId: string}>(`${this.config.apiUrl}/user/login`, { email, password }).pipe(
       tap(data => {

@@ -5,7 +5,7 @@
     <span style="float:right;font-size:0.6em">{{ post.createdAt | date: "MMMM dd, yyyy, HH:mm" }}</span>
   </mat-card-title>
   <mat-card-content>{{ post.content }}</mat-card-content>
-  <mat-card-actions>
+  <mat-card-actions *ngIf="(isAuth$ | async) && currentUser === post.userId">
     <button color="primary" mat-flat-button>MODIFY</button>
     <button color="warn" mat-flat-button>DELETE</button>
   </mat-card-actions>
