@@ -18,6 +18,14 @@ export class PostsService {
     return this.http.get<{ totalPages: number, results: Post[] }>(`${this.apiUrl}/posts?pageNumber=${pageNumber}&pageSize=${pageSize}`);
   }
 
+  getPost(id: string) {
+    return this.http.get<Post>(`${this.apiUrl}/posts/${id}`);
+  }
+
+  modifyPost(id: string, title: string, content: string) {
+    return this.http.put(`${this.apiUrl}/posts/modify/${id}`, { post: { title, content } });
+  }
+
   newPost(title: string, content: string) {
     return this.http.post(`${this.apiUrl}/posts/new-post`, { post: { title, content }});
   }

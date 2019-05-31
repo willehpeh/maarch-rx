@@ -8,7 +8,7 @@
   </mat-card-title>
   <mat-card-content>{{ post.content }}</mat-card-content>
   <mat-card-actions *ngIf="(isAuth$ | async) && currentUser === post.userId">
-    <button color="primary" mat-flat-button>MODIFY</button>
+    <button color="primary" mat-flat-button (click)="onModify(post._id)">MODIFY</button>
     <button color="warn" mat-flat-button>DELETE</button>
   </mat-card-actions>
 </mat-card>

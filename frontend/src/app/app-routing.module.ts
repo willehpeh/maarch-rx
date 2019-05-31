@@ -5,6 +5,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { MessagesListComponent } from './messages-list/messages-list.component';
 import { NewPostComponent } from './new-post/new-post.component';
+import { PostResolver } from './services/resolvers/post.resolver';
 
 const routes: Routes = [
   { path: 'auth', children: [
@@ -13,6 +14,7 @@ const routes: Routes = [
     ]},
   { path: 'posts', children: [
       { path: 'new-post', component: NewPostComponent },
+      { path: 'modify-post/:id', component: NewPostComponent, resolve: { post: PostResolver } },
       { path: '', pathMatch: 'full', component: PostsListComponent }
   ]},
   { path: 'messages', component: MessagesListComponent },

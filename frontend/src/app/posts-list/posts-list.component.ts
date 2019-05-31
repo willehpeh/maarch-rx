@@ -3,7 +3,7 @@ import { PostsService } from '../services/posts.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Post } from '../models/Post.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -19,7 +19,8 @@ export class PostsListComponent implements OnInit {
 
   constructor(private posts: PostsService,
               private route: ActivatedRoute,
-              private auth: AuthService) { }
+              private auth: AuthService,
+              private router: Router) {}
 
   ngOnInit() {
     this.posts$ = this.posts.getPosts().pipe(
@@ -27,6 +28,10 @@ export class PostsListComponent implements OnInit {
     );
     this.isAuth$ = this.auth.getIsAuth();
     this.currentUser = this.auth.getCurrentUser();
+  }
+
+  onModify(id: string) {
+    this.router.navigateByUrl(`posts/modify-post/${id}`);
   }
 
 }
