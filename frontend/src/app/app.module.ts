@@ -18,6 +18,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { MessagesListComponent } from './messages-list/messages-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { httpInterceptorProviders } from './services/interceptors';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatInputModule
   ],
-  providers: [],
+  providers: [
+    httpInterceptorProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
