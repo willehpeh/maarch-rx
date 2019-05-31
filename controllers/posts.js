@@ -20,11 +20,8 @@ exports.getPosts = (req, res, next) => {
 
 exports.getPostById = (req, res, next) => {
   Post.findOne({ _id: req.params.id }).then(result => {
-    if (!result) {
-      res.status(404).json({ error: 'Post not found!' });
-    }
     res.status(200).json(result);
-  })
+  }).catch(err => res.status(404).json({error: err || 'Post not found!'}));
 };
 
 exports.createPost = (req, res, next) => {
@@ -57,12 +54,7 @@ exports.updatePost = (req, res, next) => {
   if (!req.body.post) {
     return res.status(400).json({ error: 'No post received!' });
   }
-  Post.updateOne({ _id: req.params.id }, { title: req.body.post.title, content: req.body.post.content }).then(
-    () => {
-      res.status(200).json({ message: 'Post updated successfully!' });
-    },
-    err => {
-      res.status(500).json({ error: err || 'Database update error!' });
-    }
-  )
+  Post.updateOne({ _id: req.params.id }, { title: req.body.post.title, content: req.body.post.content })
+    .then(() => res.status(200).json({ message: 'Post updated successfully!' }))
+    .catch(err => res.status(500).json({ error: err || 'Database update error!' }));
 };
