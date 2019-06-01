@@ -12,22 +12,18 @@ import {
   MatInputModule,
   MatToolbarModule
 } from '@angular/material';
-import { PostsListComponent } from './posts-list/posts-list.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { httpInterceptorProviders } from './services/interceptors';
-import { NewPostComponent } from './new-post/new-post.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    PostsListComponent,
     LoginComponent,
     SignupComponent,
-    NewPostComponent
   ],
   imports: [
     BrowserModule,

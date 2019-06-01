@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { PostsService } from '../services/posts.service';
+import { PostsService } from '../../services/posts.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Post } from '../models/Post.model';
+import { Post } from '../../models/Post.model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-posts-list',
