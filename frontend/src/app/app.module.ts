@@ -15,7 +15,6 @@ import {
 import { PostsListComponent } from './posts-list/posts-list.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
-import { MessagesListComponent } from './messages-list/messages-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { httpInterceptorProviders } from './services/interceptors';
@@ -28,7 +27,6 @@ import { NewPostComponent } from './new-post/new-post.component';
     PostsListComponent,
     LoginComponent,
     SignupComponent,
-    MessagesListComponent,
     NewPostComponent
   ],
   imports: [
