@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Config } from '../config/config';
-import { switchMap, tap } from 'rxjs/operators';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,13 @@ export class AuthService {
 
   getIsAuth() {
     return this.isAuth$.asObservable();
+  }
+
+  checkToken() {
+    return this.http.get<{ message?: string, error?: string }>(`${this.config.apiUrl}/user/check-token`).pipe(
+      map(result => !!result.message),
+      catchError(err => of(false))
+    );
   }
 
   getToken() {
