@@ -46,3 +46,7 @@ exports.login = (req, res, next) => {
     res.status(500).json({ error: error || 'Database error!' });
   });
 };
+
+exports.checkToken = (req, res, next) => {
+  res.status(200).json({ message: 'Valid token!' });
+};

@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
     next();
   } catch(error) {
     res.status(401).json({
-      error: 'You are not authorised to create new posts!'
+      error: 'Invalid token!'
     });
   }
 };
